@@ -1,7 +1,8 @@
 import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
 
-const BACKEND_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
+// ✅ Fixed: correct Render backend URL
+const BACKEND_URL = import.meta.env.VITE_API_URL || "https://ashwinweb-dev-1.onrender.com";
 
 function Contact() {
   const form = useRef();
@@ -23,7 +24,7 @@ function Contact() {
         "service_pyfojhz",
         "template_ne4ild7",
         form.current,
-        "gHBusPsFYHnmfnk2ts"
+        "gHBuPsFYHnmfnk2ts"   // ✅ Fixed: was "gHBusPsFYHnmfnk2ts" (extra 's')
       );
     } catch (err) {
       console.warn("EmailJS warning:", err);
