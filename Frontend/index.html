@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- ═══════════════════════════════════════════════
+         RESPONSIVE META — covers all devices:
+         iPhone SE → iPhone 15 Pro Max
+         Android small → Android tablet
+         iPad Mini → iPad Pro 12.9"
+         Laptop → 4K desktop
+    ═══════════════════════════════════════════════ -->
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0,
+                   minimum-scale=1.0, maximum-scale=5.0,
+                   viewport-fit=cover" />
+
+    <!-- SEO -->
+    <title>Ashwin S | AI Engineer & Full Stack Developer</title>
+    <meta name="description"
+          content="Portfolio of Ashwin S — AI Engineer, Full Stack Developer,
+                   Freelancer, and AI & Data Science student passionate about
+                   building intelligent applications and futuristic digital
+                   experiences." />
+    <meta name="keywords"
+          content="Ashwin S, AI Engineer, Full Stack Developer, Portfolio,
+                   React Developer, Freelancer, Fiverr, Web Developer,
+                   AI & Data Science" />
+    <meta name="author" content="Ashwin S" />
+
+    <!-- PWA / Theme Colors -->
+    <meta name="theme-color" content="#00d4ff"
+          media="(prefers-color-scheme: dark)" />
+    <meta name="theme-color" content="#0077aa"
+          media="(prefers-color-scheme: light)" />
+
+    <!-- iOS Web App -->
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style"
+          content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="Ashwin S" />
+
+    <!-- Android Chrome -->
+    <meta name="mobile-web-app-capable" content="yes" />
+
+    <!-- Open Graph -->
+    <meta property="og:title"       content="Ashwin S | Portfolio" />
+    <meta property="og:description" content="AI Engineer • Full Stack Developer • Freelancer" />
+    <meta property="og:type"        content="website" />
+    <meta property="og:image"       content="/Profile.png" />
+    <meta property="og:image:width"  content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card"        content="summary_large_image" />
+    <meta name="twitter:title"       content="Ashwin S | Portfolio" />
+    <meta name="twitter:description" content="AI Engineer • Full Stack Developer • Freelancer" />
+    <meta name="twitter:image"       content="/Profile.png" />
+
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+          crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Google Fonts — preconnect first, then load -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Mono:wght@400;700&display=swap"
+          rel="stylesheet" />
+
+    <style>
+      /* ── Critical above-the-fold CSS (prevents FOUC) ── */
+      :root {
+        --nav-height: 68px;
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        /* Respect user preference for reduced motion */
+        scroll-padding-top: var(--nav-height);
+        -webkit-text-size-adjust: 100%; /* prevent iOS font-size inflation */
+        text-size-adjust: 100%;
+      }
+
+      body {
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+        background: #0a0a0a;
+        color: #f0f6ff;
+        font-family: 'Inter', sans-serif;
+
+        /* iOS notch / Dynamic Island support */
+        padding-left:   env(safe-area-inset-left);
+        padding-right:  env(safe-area-inset-right);
+      }
+
+      /* Scroll lock (applied by Navbar.jsx on mobile menu open) */
+      body.menu-open {
+        overflow: hidden;
+        touch-action: none;
+      }
+
+      /* Smooth tap highlight removal on touch devices */
+      a,
+      button,
+      [role="button"] {
+        -webkit-tap-highlight-color: transparent;
+      }
+
+      /* Prevent images from breaking layout */
+      img,
+      svg,
+      video {
+        max-width: 100%;
+        display: block;
+      }
+
+      /* Focus ring — accessible but styled */
+      :focus-visible {
+        outline: 2px solid #00d4ff;
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      /* ── Responsive font-size fluid scale ──
+         Clamps between 14px (320px viewport) and 16px (1280px+) */
+      html {
+        font-size: clamp(14px, calc(14px + 2 * ((100vw - 320px) / 960)), 16px);
+      }
+
+      /* Loading screen (removed once React mounts) */
+      #root:empty::before {
+        content: '';
+        position: fixed;
+        inset: 0;
+        background: #0a0a0a;
+        z-index: 99999;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        html {
+          scroll-behavior: auto;
+        }
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+
+  <body>
+    <div id="root"></div>
+
+    <!-- React App -->
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
