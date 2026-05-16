@@ -9,8 +9,8 @@ const app = express();
 // CORS — Allow Vercel frontend + local dev
 // ════════════════════════════════════════
 const allowedOrigins = [
-  "https://ashwinweb-dev.vercel.app", // ← your Vercel URL
-  "https://ashwinweb-dev.onrender.com",
+  "https://ashwinweb-dev.vercel.app",
+  "https://portfolio-website-dqc2.onrender.com",
   "http://localhost:5173",
   "http://localhost:3000",
 ];
@@ -29,9 +29,6 @@ app.use(
     credentials: true,
   })
 );
-
-// Handle preflight requests
-app.options("/(.*)", cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -58,7 +55,6 @@ app.use("/api/projects", projectRoutes);
 app.post("/api/contact", async (req, res) => {
   const { name, email, message } = req.body;
 
-  // Validation
   if (!name || !email || !message) {
     return res.status(400).json({ error: "All fields are required." });
   }
@@ -67,7 +63,6 @@ app.post("/api/contact", async (req, res) => {
     return res.status(400).json({ error: "Invalid email address." });
   }
 
-  // Save to Supabase
   const { data, error } = await supabase
     .from("contacts")
     .insert([
