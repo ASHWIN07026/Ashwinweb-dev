@@ -10,11 +10,11 @@ const app = express();
 // ════════════════════════════════════════
 const allowedOrigins = [
   "https://ashwinweb-dev.vercel.app",
+  "https://ashwinweb-dev-ashwins-projects-5f22a8de.vercel.app",
   "https://ashwinweb-dev-1.onrender.com",
   "http://localhost:5173",
   "http://localhost:3000",
 ];
-
 app.use(
   cors({
     origin: (origin, callback) => {
