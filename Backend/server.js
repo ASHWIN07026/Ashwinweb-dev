@@ -10,7 +10,7 @@ const app = express();
 // ════════════════════════════════════════
 const allowedOrigins = [
   "https://ashwinweb-dev.vercel.app",
-  "https://portfolio-website-dqc2.onrender.com",
+  "https://ashwinweb-dev-1.onrender.com",
   "http://localhost:5173",
   "http://localhost:3000",
 ];
