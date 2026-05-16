@@ -9,7 +9,7 @@ const app = express();
 // CORS — Allow Vercel frontend + local dev
 // ════════════════════════════════════════
 const allowedOrigins = [
-  "https://ashwins07024-portfolio.vercel.app", // ← your Vercel URL
+  "https://ashwinweb-dev.vercel.app", // ← your Vercel URL
   "https://portfolio-website-dqc2.onrender.com",
   "http://localhost:5173",
   "http://localhost:3000",
