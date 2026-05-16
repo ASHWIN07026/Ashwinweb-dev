@@ -1,29 +1,52 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import emailjs from "@emailjs/browser";
+
+const BACKEND_URL = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
 function Contact() {
   const form = useRef();
+  const [status, setStatus] = useState("idle"); // idle | sending | success | error
+  const [errorMsg, setErrorMsg] = useState("");
 
-  const sendEmail = (e) => {
+  const sendEmail = async (e) => {
     e.preventDefault();
+    setStatus("sending");
+    setErrorMsg("");
 
-    emailjs
-      .sendForm(
+    const name    = form.current.name.value.trim();
+    const email   = form.current.email.value.trim();
+    const message = form.current.message.value.trim();
+
+    // ── 1. Send via EmailJS ──
+    try {
+      await emailjs.sendForm(
         "service_pyfojhz",
         "template_ne4ild7",
         form.current,
         "gHBusPsFYHnmfnk2ts"
-      )
-      .then(
-        () => {
-          alert("🚀 Message Sent Successfully!");
-          form.current.reset();
-        },
-        (error) => {
-          alert("❌ Failed to Send Message");
-          console.log(error.text);
-        }
       );
+    } catch (err) {
+      console.warn("EmailJS warning:", err);
+    }
+
+    // ── 2. Save to Supabase via backend ──
+    try {
+      const res = await fetch(`${BACKEND_URL}/api/contact`, {
+        method:  "POST",
+        headers: { "Content-Type": "application/json" },
+        body:    JSON.stringify({ name, email, message }),
+      });
+
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || "Server error");
+
+      setStatus("success");
+      form.current.reset();
+    } catch (err) {
+      console.error("Backend error:", err.message);
+      setErrorMsg(err.message || "Failed to send message.");
+      setStatus("error");
+    }
   };
 
   return (
@@ -81,7 +104,6 @@ function Contact() {
 
             {/* Social Icons */}
             <div className="contact-socials">
-
               <a
                 href="https://www.linkedin.com/in/ashwin-s-650b48329"
                 target="_blank"
@@ -129,7 +151,6 @@ function Contact() {
                   <path d="M15 6.5a1 1 0 1 0 0-2 1 1 0 0 0 0 2zm-1 1.5h2v8h-2V8z"/>
                 </svg>
               </a>
-
             </div>
           </div>
 
@@ -138,7 +159,7 @@ function Contact() {
             <form ref={form} onSubmit={sendEmail} noValidate>
 
               <div className="form-group">
-                <label htmlFor="contact-name">Your Name</label>
+                <label htmlFor="contact-name">YOUR NAME</label>
                 <input
                   id="contact-name"
                   type="text"
@@ -146,11 +167,12 @@ function Contact() {
                   placeholder="Your Name"
                   required
                   autoComplete="name"
+                  disabled={status === "sending"}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="contact-email">Your Email</label>
+                <label htmlFor="contact-email">YOUR EMAIL</label>
                 <input
                   id="contact-email"
                   type="email"
@@ -158,22 +180,51 @@ function Contact() {
                   placeholder="Your Email"
                   required
                   autoComplete="email"
+                  disabled={status === "sending"}
                 />
               </div>
 
               <div className="form-group">
-                <label htmlFor="contact-message">Your Message</label>
+                <label htmlFor="contact-message">YOUR MESSAGE</label>
                 <textarea
                   id="contact-message"
                   name="message"
                   placeholder="Your Message"
                   rows="5"
                   required
+                  disabled={status === "sending"}
                 ></textarea>
               </div>
 
-              <button type="submit" className="btn-send">
-                <i className="fas fa-paper-plane"></i> Send Message
+              {/* Status Messages */}
+              {status === "success" && (
+                <div className="form-status form-status--success">
+                  <i className="fas fa-check-circle"></i>
+                  Message sent successfully! I'll get back to you soon.
+                </div>
+              )}
+
+              {status === "error" && (
+                <div className="form-status form-status--error">
+                  <i className="fas fa-exclamation-circle"></i>
+                  {errorMsg || "Something went wrong. Please try again."}
+                </div>
+              )}
+
+              <button
+                type="submit"
+                className="btn-send"
+                disabled={status === "sending"}
+              >
+                {status === "sending" ? (
+                  <>
+                    <i className="fas fa-spinner fa-spin"></i> Sending...
+                  </>
+                ) : (
+                  <>
+                    <i className="fas fa-paper-plane"></i> Send Message
+                  </>
+                )}
               </button>
 
             </form>
