@@ -106,8 +106,8 @@ Portfolio/
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/ASHWIN07026/Personal-Portfolio.git
-cd Personal-Portfolio
+git clone https://github.com/ASHWIN07026/Ashwinweb-dev.git
+cd Ashwinweb-dev
 ```
 
 ### 2. Frontend setup
