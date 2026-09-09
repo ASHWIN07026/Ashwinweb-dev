@@ -453,43 +453,19 @@ Then start the server:
 npm start
 ```
 
----
 
-# 🔐 Environment Variables
+# Environment Variables
 
-Create:
-
-```text
-.env
-```
-
-using:
-
-```text
-.env.example
-```
-
-as your template.
-
-Example:
-
-```env
+# Supabase
 SUPABASE_URL=your_supabase_project_url
+
 SUPABASE_KEY=your_supabase_key
+
+# Server
 PORT=5000
-```
-
-### ⚠️ Important
-
-Never commit:
-
-```text
-.env
-```
-
-The real `.env` file should remain local or be configured directly in the deployment platform.
 
 ---
+
 
 # 🛡️ Security Notes
 
