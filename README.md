@@ -24,224 +24,295 @@ A modern full-stack portfolio application showcasing my projects, skills, certif
 
 ---
 
+## 🖥️ Portfolio Preview
+
+<div align="center">
+
+<a href="https://ashwinweb-dev.vercel.app">
+<img
+  src="docs/portfolio-preview.png"
+  alt="Ashwin S Full Stack Developer Portfolio Preview"
+  width="100%"
+/>
+</a>
+
+<br/><br/>
+
+<a href="https://ashwinweb-dev.vercel.app">
+<img
+  src="https://img.shields.io/badge/VIEW_LIVE_PORTFOLIO-000000?style=for-the-badge&logo=vercel&logoColor=white"
+  alt="View Live Portfolio"
+/>
+</a>
+
+<p>
+<b>Click the preview or button above to explore the live application.</b>
+</p>
+
+</div>
+
+---
+
 ## 📌 Project Overview
 
-This project is a **full-stack developer portfolio platform** designed to present my technical skills, projects, certifications, achievements and contact information in a professional and interactive way.
+This project is a **full-stack developer portfolio platform** designed to present my technical skills, projects, certifications, achievements and contact information through a professional and interactive web application.
 
-Unlike a static portfolio, this application includes:
+Unlike a traditional static portfolio, this application demonstrates practical experience across the complete web-development lifecycle:
 
-- a React frontend
-- a Node.js/Express backend
-- PostgreSQL database integration through Supabase
-- contact form handling
-- EmailJS notifications
-- live cloud deployment
+- ⚛️ React frontend development
+- ⚙️ Node.js and Express backend development
+- 🔗 REST API integration
+- 🗄️ Supabase PostgreSQL database
+- 📬 Contact-form processing
+- ✉️ EmailJS notifications
+- 📱 Responsive web design
+- 🔐 Environment-based configuration
+- ☁️ Cloud deployment
 
-The application was built as part of my **Web Development Internship at Thiranex** and later improved into a production-style portfolio project.
+The application was originally built as part of my **Web Development Internship at Thiranex** and later expanded into a production-style full-stack portfolio project.
+
+---
+
+## 📊 Project Status
+
+| Component | Status |
+|---|---|
+| 🌐 Frontend | ✅ Deployed on Vercel |
+| ⚙️ Backend | ✅ Deployed on Render |
+| 🗄️ Database | ✅ Supabase PostgreSQL |
+| 📬 Contact Form | ✅ Implemented |
+| ✉️ Email Notifications | ✅ EmailJS |
+| 📱 Responsive UI | ✅ Desktop / Tablet / Mobile |
+| 🔐 Environment Configuration | ✅ Environment Variables |
 
 ---
 
 ## 🎯 Problem Statement
 
-Traditional resumes and static portfolio pages often provide limited interaction and do not fully demonstrate a developer's ability to build complete applications.
+Traditional resumes and static portfolio pages provide limited opportunities to demonstrate practical software-engineering skills.
 
-This project solves that by creating a portfolio that itself demonstrates:
+A developer may list technologies such as React, Node.js, APIs and databases on a resume, but recruiters cannot immediately see how those technologies were combined into a working application.
+
+This project addresses that limitation by turning the portfolio itself into a **full-stack software project** demonstrating:
 
 - frontend development
 - backend API development
 - database integration
-- responsive design
-- cloud deployment
-- environment-variable management
+- responsive UI design
 - third-party service integration
+- environment configuration
+- cloud deployment
 
 ---
 
 ## 💡 Solution
 
-The platform uses a modern full-stack architecture:
+The portfolio uses a modern full-stack architecture connecting the user interface, backend API, database and notification services.
 
 ```text
 User
-  ↓
+  │
+  ▼
 React + Vite Frontend
-  ↓
-Node.js + Express REST API
-  ↓
-Supabase PostgreSQL Database
-  ↓
-EmailJS Notifications
+  │
+  │ REST API
+  ▼
+Node.js + Express Backend
+  │
+  ├──────────────► Supabase PostgreSQL
+  │
+  └──────────────► EmailJS Notifications
 ```
 
-Deployment:
+### Deployment Architecture
 
 ```text
-Frontend → Vercel
-Backend  → Render
-Database → Supabase
+Frontend  → Vercel
+Backend   → Render
+Database  → Supabase PostgreSQL
+Email     → EmailJS
 ```
 
 ---
 
-## ✨ Key Features
+# ✨ Key Features
+
+<table>
+<tr>
+<td width="50%" valign="top">
 
 ### 🎨 Frontend
 
-- Fully responsive React interface
+- Responsive React interface
 - Mobile, tablet and desktop support
-- Dark visual theme
-- Animated backgrounds and UI effects
+- Modern dark-themed UI
+- Animated visual effects
 - Reusable React components
-- Fast Vite development and production builds
+- Vite-powered development
+- Responsive navigation
+- Interactive portfolio sections
 
-### 👨‍💻 Portfolio Content
+</td>
 
-- Hero section
-- About section
-- Skills showcase
-- Project showcase
-- Certifications
-- Achievements
-- Contact section
+<td width="50%" valign="top">
+
+### ⚙️ Backend
+
+- Node.js server
+- Express REST API
+- Request processing
+- CORS configuration
+- Database connectivity
+- Contact-form processing
+- Environment-based configuration
+
+</td>
+</tr>
+
+<tr>
+<td width="50%" valign="top">
 
 ### 📬 Contact System
 
 - Functional contact form
-- EmailJS email notification
-- Submission storage in Supabase PostgreSQL
 - Form validation
 - Backend API integration
+- Supabase data storage
+- EmailJS notifications
+- User feedback handling
+
+</td>
+
+<td width="50%" valign="top">
 
 ### ☁️ Deployment
 
-- React frontend hosted on Vercel
-- Node.js backend hosted on Render
-- PostgreSQL database hosted with Supabase
-- Environment variables used for credentials and configuration
+- Vercel frontend hosting
+- Render backend hosting
+- Supabase cloud PostgreSQL
+- Environment variables
+- Production deployment
+- GitHub source control
 
-### 🔐 Security & Configuration
-
-- CORS configuration
-- Environment-based secrets
-- No sensitive credentials hardcoded in the repository
-- Backend/API separation
-- Database credentials handled through environment variables
+</td>
+</tr>
+</table>
 
 ---
 
 # 🛠️ Tech Stack
 
-<table>
+<div align="center">
 
-<tr>
-<td><b>Layer</b></td>
-<td><b>Technology</b></td>
-<td><b>Purpose</b></td>
-</tr>
+### Frontend
 
-<tr>
-<td>Frontend</td>
-<td>React.js</td>
-<td>Component-based user interface</td>
-</tr>
+<img src="https://skillicons.dev/icons?i=react,vite,javascript,html,css" />
 
-<tr>
-<td>Build Tool</td>
-<td>Vite</td>
-<td>Development server and optimized builds</td>
-</tr>
+<br/><br/>
 
-<tr>
-<td>Styling</td>
-<td>CSS3</td>
-<td>Responsive custom UI design</td>
-</tr>
+### Backend
 
-<tr>
-<td>Backend</td>
-<td>Node.js</td>
-<td>JavaScript runtime</td>
-</tr>
+<img src="https://skillicons.dev/icons?i=nodejs,express" />
 
-<tr>
-<td>API</td>
-<td>Express.js</td>
-<td>REST API backend</td>
-</tr>
+<br/><br/>
 
-<tr>
-<td>Database</td>
-<td>Supabase PostgreSQL</td>
-<td>Persistent contact-form data</td>
-</tr>
+### Database & Cloud
 
-<tr>
-<td>Email</td>
-<td>EmailJS</td>
-<td>Email notification service</td>
-</tr>
+<img src="https://skillicons.dev/icons?i=postgresql,supabase,vercel" />
 
-<tr>
-<td>Frontend Deployment</td>
-<td>Vercel</td>
-<td>Production hosting</td>
-</tr>
+<br/><br/>
 
-<tr>
-<td>Backend Deployment</td>
-<td>Render</td>
-<td>API hosting</td>
-</tr>
+### Development Tools
 
-</table>
+<img src="https://skillicons.dev/icons?i=git,github,vscode,npm" />
+
+</div>
+
+<br/>
+
+| Layer | Technology | Purpose |
+|---|---|---|
+| Frontend | React.js | Component-based user interface |
+| Build Tool | Vite | Fast development and optimized builds |
+| Language | JavaScript | Frontend and backend programming |
+| Styling | CSS3 | Responsive custom UI |
+| Backend | Node.js | Server-side JavaScript runtime |
+| API | Express.js | REST API development |
+| Database | Supabase PostgreSQL | Persistent application data |
+| Email | EmailJS | Contact email notifications |
+| Frontend Hosting | Vercel | Production frontend deployment |
+| Backend Hosting | Render | Backend/API deployment |
+| Version Control | Git & GitHub | Source-code management |
 
 ---
 
-# 🏗️ Architecture
+# 🏗️ System Architecture
 
 ```text
-┌──────────────────────────────┐
-│            USER              │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│      REACT + VITE UI         │
-│                              │
-│ Hero                         │
-│ About                        │
-│ Skills                       │
-│ Projects                     │
-│ Certifications               │
-│ Contact                      │
-└──────────────┬───────────────┘
-               │
-               │ REST API
-               ▼
-┌──────────────────────────────┐
-│   NODE.JS + EXPRESS BACKEND  │
-│                              │
-│ API Routes                   │
-│ Input Validation             │
-│ CORS                         │
-│ Database Integration         │
-└──────────────┬───────────────┘
-               │
-               ▼
-┌──────────────────────────────┐
-│     SUPABASE POSTGRESQL      │
-│                              │
-│ Contact Form Submissions     │
-└──────────────────────────────┘
-
-               +
-
-┌──────────────────────────────┐
-│           EMAILJS            │
-│                              │
-│ Email Notifications          │
-└──────────────────────────────┘
+┌─────────────────────────────────┐
+│              USER               │
+└────────────────┬────────────────┘
+                 │
+                 ▼
+┌─────────────────────────────────┐
+│       REACT + VITE FRONTEND     │
+│                                 │
+│  • Hero                         │
+│  • About                        │
+│  • Skills                       │
+│  • Projects                     │
+│  • Certifications              │
+│  • Achievements                 │
+│  • Contact                      │
+└────────────────┬────────────────┘
+                 │
+                 │ REST API
+                 ▼
+┌─────────────────────────────────┐
+│    NODE.JS + EXPRESS BACKEND    │
+│                                 │
+│  • API Routes                   │
+│  • Request Processing           │
+│  • Validation                   │
+│  • CORS                         │
+│  • Database Integration         │
+└──────────┬───────────┬──────────┘
+           │           │
+           ▼           ▼
+┌────────────────┐  ┌────────────────┐
+│    SUPABASE    │  │    EMAILJS     │
+│   PostgreSQL   │  │ Notifications  │
+│                │  │                │
+│ Contact Data   │  │ Contact Email  │
+└────────────────┘  └────────────────┘
 ```
+
+---
+
+# 🔗 Contact Form Flow
+
+```text
+Visitor
+   │
+   ▼
+Contact Form
+   │
+   ▼
+Frontend Validation
+   │
+   ▼
+Express REST API
+   │
+   ├──────────────► Supabase PostgreSQL
+   │                 │
+   │                 └─ Store Submission
+   │
+   └──────────────► EmailJS
+                     │
+                     └─ Send Notification
+```
+
+This flow demonstrates **frontend-to-backend communication, API handling, database persistence and third-party service integration**.
 
 ---
 
@@ -276,15 +347,60 @@ Ashwinweb-dev/
 │
 ├── Backend/
 │   ├── index.js
-│   ├── package.json
-│   └── .env
+│   └── package.json
 │
-└── README.md
+├── docs/
+│   └── portfolio-preview.png
+│
+├── .env.example
+├── .gitignore
+├── README.md
+├── package.json
+└── package-lock.json
 ```
+
+> `.env` is intentionally excluded from the repository. Use `.env.example` as the configuration template.
 
 ---
 
-# 🚀 Getting Started
+# ⚡ Quick Start
+
+## 1️⃣ Clone the Repository
+
+```bash
+git clone https://github.com/ASHWIN07026/Ashwinweb-dev.git
+cd Ashwinweb-dev
+```
+
+## 2️⃣ Start the Frontend
+
+```bash
+cd Frontend
+npm install
+npm run dev
+```
+
+The frontend normally runs at:
+
+```text
+http://localhost:5173
+```
+
+## 3️⃣ Start the Backend
+
+Open another terminal:
+
+```bash
+cd Backend
+npm install
+npm start
+```
+
+Configure the required environment variables before starting the backend.
+
+---
+
+# 🚀 Detailed Setup
 
 ## Prerequisites
 
@@ -298,16 +414,7 @@ Make sure you have:
 
 ---
 
-## 1. Clone the Repository
-
-```bash
-git clone https://github.com/ASHWIN07026/Ashwinweb-dev.git
-cd Ashwinweb-dev
-```
-
----
-
-## 2. Run the Frontend
+## Frontend Installation
 
 ```bash
 cd Frontend
@@ -315,28 +422,22 @@ npm install
 npm run dev
 ```
 
-The frontend will normally run at:
+For a production build:
 
-```text
-http://localhost:5173
+```bash
+npm run build
 ```
 
 ---
 
-## 3. Run the Backend
-
-Open another terminal:
+## Backend Installation
 
 ```bash
 cd Backend
 npm install
 ```
 
-Create:
-
-```text
-.env
-```
+Create a local `.env` file using `.env.example` as the template.
 
 Example:
 
@@ -346,7 +447,7 @@ SUPABASE_KEY=your_supabase_key
 PORT=5000
 ```
 
-Then run:
+Then start the server:
 
 ```bash
 npm start
@@ -356,33 +457,57 @@ npm start
 
 # 🔐 Environment Variables
 
-Never commit real credentials.
+Create:
 
-Recommended structure:
-
-```env
-SUPABASE_URL=
-SUPABASE_KEY=
-PORT=5000
+```text
+.env
 ```
 
-Add `.env` to `.gitignore`.
-
-For a public repository, also add:
+using:
 
 ```text
 .env.example
 ```
 
-with placeholder values only.
+as your template.
+
+Example:
+
+```env
+SUPABASE_URL=your_supabase_project_url
+SUPABASE_KEY=your_supabase_key
+PORT=5000
+```
+
+### ⚠️ Important
+
+Never commit:
+
+```text
+.env
+```
+
+The real `.env` file should remain local or be configured directly in the deployment platform.
+
+---
+
+# 🛡️ Security Notes
+
+- `.env` files should be excluded through `.gitignore`
+- Private credentials should never be committed to GitHub
+- `.env.example` contains placeholder configuration only
+- CORS controls allowed frontend origins
+- Database configuration is managed through environment variables
+- Production environment variables are configured in hosting dashboards
+- Frontend and backend are separated into independent application layers
 
 ---
 
 # 📧 EmailJS Configuration
 
-The project uses EmailJS for contact-form email notifications.
+The contact system uses EmailJS to deliver email notifications.
 
-Example:
+Example configuration:
 
 ```javascript
 emailjs.sendForm(
@@ -390,24 +515,26 @@ emailjs.sendForm(
   "YOUR_TEMPLATE_ID",
   form.current,
   "YOUR_PUBLIC_KEY"
-)
+);
 ```
 
-Keep sensitive configuration values outside committed source files whenever possible.
+Replace the placeholder values with your own EmailJS configuration.
+
+Do not publish credentials that should remain private.
 
 ---
 
 # 🌐 Deployment
 
-## Frontend — Vercel
+## ▲ Frontend — Vercel
 
-The React frontend is deployed on Vercel.
+The React frontend is deployed using **Vercel**.
 
-Live application:
+### Live Application
 
 **https://ashwinweb-dev.vercel.app**
 
-Typical production command:
+Production build:
 
 ```bash
 npm run build
@@ -415,9 +542,11 @@ npm run build
 
 ---
 
-## Backend — Render
+## ⚙️ Backend — Render
 
-For Render:
+The Node.js/Express backend is deployed using **Render**.
+
+Typical configuration:
 
 ```text
 Build Command:
@@ -427,81 +556,140 @@ Start Command:
 node index.js
 ```
 
-Environment variables should be configured in the Render dashboard.
+Required environment variables should be configured through the Render environment settings.
 
 ---
 
-## Database — Supabase
+## 🗄️ Database — Supabase
 
-Supabase provides:
+Supabase provides the project's PostgreSQL database.
+
+It is used for:
 
 - PostgreSQL hosting
-- database access
-- backend persistence
-
-The database stores contact-form submission data.
+- persistent data storage
+- contact-form submissions
+- backend database integration
 
 ---
 
-# 📸 Application Sections
+# 📱 Application Sections
 
 | Section | Purpose |
 |---|---|
-| Hero | Developer introduction and CTA |
-| About | Background and professional summary |
-| Skills | Technologies and development tools |
-| Projects | Software-development project showcase |
-| Certifications | Certifications and technical learning |
-| Contact | User contact form |
-| Footer | Social and navigation links |
+| 🏠 Hero | Developer introduction and primary actions |
+| 👨‍💻 About | Professional background |
+| 🛠️ Skills | Technologies and development tools |
+| 🚀 Projects | Software-development project showcase |
+| 📜 Certifications | Certifications and technical learning |
+| 🏆 Achievements | Technical achievements and activities |
+| 📬 Contact | Visitor communication |
+| 🔗 Footer | Navigation and social links |
 
 ---
 
-# 📷 Screenshots
+# 📷 Screenshot
 
-Add real project screenshots inside:
+<div align="center">
 
-```text
-docs/
-├── home.png
-├── about.png
-├── projects.png
-├── skills.png
-├── certifications.png
-├── contact.png
-└── mobile-view.png
-```
+<img
+  src="docs/portfolio-preview.png"
+  alt="Ashwin S Portfolio Application"
+  width="90%"
+/>
 
-Then display them here:
+<br/><br/>
 
-```markdown
-![Home](docs/home.png)
+<a href="https://ashwinweb-dev.vercel.app">
+<img
+  src="https://img.shields.io/badge/OPEN_LIVE_APPLICATION-000000?style=for-the-badge&logo=vercel&logoColor=white"
+/>
+</a>
 
-![Projects](docs/projects.png)
+</div>
 
-![Contact](docs/contact.png)
-```
+> The screenshot above shows the deployed portfolio application. For the complete interactive experience, use the live application.
 
-> Real screenshots are strongly recommended because they allow recruiters to understand the project immediately without running the application.
+---
+
+# 🧠 Engineering Skills Demonstrated
+
+<table>
+
+<tr>
+<td width="50%" valign="top">
+
+### Frontend Engineering
+
+- React component development
+- Responsive web design
+- Reusable UI components
+- State-driven interfaces
+- Vite development workflow
+
+</td>
+
+<td width="50%" valign="top">
+
+### Backend Engineering
+
+- Node.js development
+- Express REST APIs
+- Request processing
+- CORS configuration
+- API integration
+
+</td>
+</tr>
+
+<tr>
+<td width="50%" valign="top">
+
+### Database
+
+- PostgreSQL
+- Supabase
+- Data persistence
+- Backend/database integration
+
+</td>
+
+<td width="50%" valign="top">
+
+### Deployment & Tools
+
+- Git
+- GitHub
+- Vercel
+- Render
+- npm
+- Environment variables
+
+</td>
+</tr>
+
+</table>
 
 ---
 
 # ✅ What This Project Demonstrates
 
-This project demonstrates practical experience with:
+This repository demonstrates practical experience with:
 
-- React component development
-- frontend/backend integration
-- REST API development
-- Node.js and Express
-- PostgreSQL databases
-- Supabase
-- EmailJS integration
-- responsive web design
-- cloud deployment
-- Git and GitHub
-- environment variables
-- full-stack application architecture
+- building a complete React application
+- designing reusable frontend components
+- creating Node.js/Express APIs
+- connecting frontend and backend systems
+- integrating PostgreSQL databases
+- using Supabase
+- implementing contact workflows
+- integrating EmailJS
+- managing environment variables
+- configuring CORS
+- deploying frontend and backend services
+- using Git and GitHub for version control
+- designing responsive web interfaces
+- structuring a full-stack application
 
 ---
 
@@ -509,15 +697,30 @@ This project demonstrates practical experience with:
 
 Planned improvements include:
 
-- TypeScript migration
-- automated tests
-- GitHub Actions CI
-- improved accessibility
-- performance optimization
-- backend validation improvements
-- analytics dashboard
-- admin dashboard for contact submissions
-- automated deployment checks
+- [ ] GitHub Actions CI
+- [ ] Automated frontend tests
+- [ ] Automated backend tests
+- [ ] TypeScript migration
+- [ ] Accessibility improvements
+- [ ] Performance optimization
+- [ ] Improved backend validation
+- [ ] Analytics dashboard
+- [ ] Admin dashboard for contact submissions
+- [ ] Automated deployment checks
+
+---
+
+# 🤝 Contributing
+
+Suggestions and improvements are welcome.
+
+If you would like to contribute:
+
+```bash
+git checkout -b feature/your-feature-name
+```
+
+Make your changes, commit them and open a pull request.
 
 ---
 
@@ -533,7 +736,11 @@ This project is available under the **MIT License**.
 
 ## Ashwin S
 
-**Full Stack Developer • Software Engineer • AI/ML Developer**
+### Full Stack Developer • Software Engineer • AI/ML Developer
+
+Building practical applications across **Full Stack Development, Backend Engineering and Artificial Intelligence**.
+
+<br/>
 
 <a href="https://ashwinweb-dev.vercel.app">
 <img src="https://img.shields.io/badge/PORTFOLIO-Visit-000000?style=for-the-badge&logo=vercel&logoColor=white" />
