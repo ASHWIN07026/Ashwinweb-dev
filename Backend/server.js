@@ -5,37 +5,58 @@ require("dotenv").config();
 
 const app = express();
 
-// ════════════════════════════════════════
-// CORS — Allow Vercel frontend + local dev
-// ════════════════════════════════════════
+// Required environment variables
+if (!process.env.SUPABASE_URL || !process.env.SUPABASE_KEY) {
+  console.error(
+    "Missing required environment variables: SUPABASE_URL or SUPABASE_KEY"
+  );
+
+  process.exit(1);
+}
+
+// CORS
 const allowedOrigins = [
   "https://ashwinweb-dev.vercel.app",
   "https://ashwinweb-dev-ashwins-projects-5f22a8de.vercel.app",
-  "https://ashwinweb-dev-1.onrender.com",
   "http://localhost:5173",
   "http://localhost:3000",
 ];
+
 app.use(
   cors({
     origin: (origin, callback) => {
       if (!origin || allowedOrigins.includes(origin)) {
         callback(null, true);
       } else {
-        callback(new Error(`CORS blocked: ${origin}`));
+        console.warn(`Blocked CORS request from: ${origin}`);
+
+        callback(new Error("Origin not allowed by CORS."));
       }
     },
+
     methods: ["GET", "POST", "OPTIONS"],
-    allowedHeaders: ["Content-Type", "Authorization"],
-    credentials: true,
+
+    allowedHeaders: [
+      "Content-Type",
+      "Authorization",
+    ],
   })
 );
 
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(
+  express.json({
+    limit: "20kb",
+  })
+);
 
-// ════════════════════════════════════════
-// Supabase Client
-// ════════════════════════════════════════
+app.use(
+  express.urlencoded({
+    extended: true,
+    limit: "20kb",
+  })
+);
+
+// Supabase client
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_KEY
@@ -43,79 +64,145 @@ const supabase = createClient(
 
 app.locals.supabase = supabase;
 
-// ════════════════════════════════════════
 // Routes
-// ════════════════════════════════════════
 const projectRoutes = require("./routes/projectRoutes");
+
 app.use("/api/projects", projectRoutes);
 
-// ════════════════════════════════════════
-// Contact Form — POST /api/contact
-// ════════════════════════════════════════
+// Contact route
 app.post("/api/contact", async (req, res) => {
-  const { name, email, message } = req.body;
+  try {
+    const {
+      name,
+      email,
+      message,
+    } = req.body;
 
-  if (!name || !email || !message) {
-    return res.status(400).json({ error: "All fields are required." });
+    if (
+      typeof name !== "string" ||
+      typeof email !== "string" ||
+      typeof message !== "string"
+    ) {
+      return res.status(400).json({
+        error: "Invalid request data.",
+      });
+    }
+
+    const cleanName = name.trim();
+    const cleanEmail = email.trim().toLowerCase();
+    const cleanMessage = message.trim();
+
+    if (
+      !cleanName ||
+      !cleanEmail ||
+      !cleanMessage
+    ) {
+      return res.status(400).json({
+        error: "All fields are required.",
+      });
+    }
+
+    if (
+      !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(cleanEmail)
+    ) {
+      return res.status(400).json({
+        error: "Invalid email address.",
+      });
+    }
+
+    if (cleanName.length > 100) {
+      return res.status(400).json({
+        error: "Name is too long.",
+      });
+    }
+
+    if (cleanEmail.length > 254) {
+      return res.status(400).json({
+        error: "Email address is too long.",
+      });
+    }
+
+    if (cleanMessage.length > 2000) {
+      return res.status(400).json({
+        error: "Message must be under 2000 characters.",
+      });
+    }
+
+    const { error } = await supabase
+      .from("contacts")
+      .insert([
+        {
+          name: cleanName,
+          email: cleanEmail,
+          message: cleanMessage,
+        },
+      ]);
+
+    if (error) {
+      console.error(
+        "Supabase contact insert error:",
+        error.message
+      );
+
+      return res.status(500).json({
+        error:
+          "Failed to save message. Please try again.",
+      });
+    }
+
+    console.log(
+      `New contact message received from ${cleanName}`
+    );
+
+    return res.status(201).json({
+      success: true,
+      message: "Message sent successfully!",
+    });
+  } catch (error) {
+    console.error(
+      "Contact route error:",
+      error.message
+    );
+
+    return res.status(500).json({
+      error: "Internal server error.",
+    });
   }
-
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return res.status(400).json({ error: "Invalid email address." });
-  }
-
-  const { data, error } = await supabase
-    .from("contacts")
-    .insert([
-      {
-        name:    name.trim(),
-        email:   email.trim().toLowerCase(),
-        message: message.trim(),
-      },
-    ]);
-
-  if (error) {
-    console.error("Supabase error:", error.message);
-    return res.status(500).json({ error: "Failed to save message. Please try again." });
-  }
-
-  console.log(`✅ New contact from ${name} (${email})`);
-  res.status(200).json({
-    success: true,
-    message: "Message sent successfully!",
-  });
 });
 
-// ════════════════════════════════════════
-// Health Check — GET /
-// ════════════════════════════════════════
+// Health check
 app.get("/", (req, res) => {
-  res.json({
-    status:  "ok",
-    message: "Backend Running ✅",
-    time:    new Date().toISOString(),
+  res.status(200).json({
+    status: "ok",
+    message: "Backend Running",
+    time: new Date().toISOString(),
   });
 });
 
-// ════════════════════════════════════════
-// 404 Handler
-// ════════════════════════════════════════
+// 404 handler
 app.use((req, res) => {
-  res.status(404).json({ error: "Route not found." });
+  res.status(404).json({
+    error: "Route not found.",
+  });
 });
 
-// ════════════════════════════════════════
-// Global Error Handler
-// ════════════════════════════════════════
+// Global error handler
 app.use((err, req, res, next) => {
-  console.error("Server error:", err.message);
-  res.status(500).json({ error: err.message || "Internal server error." });
+  console.error(
+    "Server error:",
+    err.message
+  );
+
+  res.status(500).json({
+    error: "Internal server error.",
+  });
 });
 
-// ════════════════════════════════════════
-// Start Server
-// ════════════════════════════════════════
+// Start server
 const PORT = process.env.PORT || 5000;
+
 app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-  console.log(`📦 Supabase URL: ${process.env.SUPABASE_URL}`);
+  console.log(
+    `Server running on port ${PORT}`
+  );
 });
