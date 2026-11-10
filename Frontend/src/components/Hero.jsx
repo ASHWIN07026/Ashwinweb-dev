@@ -25,6 +25,7 @@ function Hero() {
     <section id="home" className="hero">
       <div className="container">
         <div className="hero-content">
+        <span className="hero-badge">Open to Full Stack &amp; AI roles</span>
           <h1>Hi, I'm Ashwin S</h1>
 
           <h2>AI & Data Science Enthusiast</h2>
